@@ -248,7 +248,7 @@ layer_2/tile_data = PackedInt32Array(1638415, 393219, 7, 2293775, 3, 1, 2097168,
 position = Vector2(459, 632)
 
 [node name="slime_1" parent="." instance=ExtResource("6_rnkkr")]
-position = Vector2(339, 513)
+position = Vector2(339, 497)
 
 [node name="slime_2" parent="." instance=ExtResource("6_rnkkr")]
 position = Vector2(529, 453)
