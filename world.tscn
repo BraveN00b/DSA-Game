@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://ywlcoxgvheox"]
 
-[ext_resource type="Texture2D" uid="uid://cc0k78tp2gsl3" path="res://mystic_woods_free_2.1/sprites/tilesets/grass.png" id="1_go12n"]
-[ext_resource type="Texture2D" uid="uid://cjkyj35eaotxg" path="res://mystic_woods_free_2.1/sprites/tilesets/plains.png" id="2_tr5sx"]
-[ext_resource type="Texture2D" uid="uid://1pvaswjv6sik" path="res://mystic_woods_free_2.1/sprites/tilesets/fences.png" id="3_7yhs5"]
-[ext_resource type="Texture2D" uid="uid://cye6c825bpm08" path="res://mystic_woods_free_2.1/sprites/objects/objects.png" id="4_ea647"]
+[ext_resource type="Texture2D" uid="uid://cc0k78tp2gsl3" path="res://art/tilesets/grass.png" id="1_go12n"]
+[ext_resource type="Texture2D" uid="uid://cjkyj35eaotxg" path="res://art/tilesets/plains.png" id="2_tr5sx"]
+[ext_resource type="Texture2D" uid="uid://1pvaswjv6sik" path="res://art/tilesets/fences.png" id="3_7yhs5"]
+[ext_resource type="Texture2D" uid="uid://cye6c825bpm08" path="res://art/objects/objects.png" id="4_ea647"]
 [ext_resource type="PackedScene" uid="uid://ci2k0jktus1ah" path="res://player.tscn" id="5_4wjjy"]
 [ext_resource type="PackedScene" uid="uid://dpoaq8l82upi4" path="res://slime.tscn" id="6_rnkkr"]
 
@@ -251,4 +251,4 @@ position = Vector2(462, 626)
 position = Vector2(339, 513)
 
 [node name="slime_2" parent="." instance=ExtResource("6_rnkkr")]
-position = Vector2(529, 453)
+position = Vector2(572, 164)
