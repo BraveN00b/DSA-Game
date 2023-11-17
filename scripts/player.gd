@@ -21,8 +21,8 @@ func _physics_process(delta):
 		player_alive = false
 		health = 0
 		print("Player Died")
-		return
-		# self.queue_free()
+		
+		self.queue_free()
 	
 func palyer_movement(delta):
 	# Down Right
