@@ -2,11 +2,15 @@ extends CharacterBody2D
 
 var current_dir = "none"
 const speed = 100
-var health = 100
+const max_health = 200
+var health = max_health
+
 var enemy_inrange = false
 var enemy_atk_cooldown = true
 var player_alive = true
 var attacking = false
+
+var regen_timer_active = true
 
 func _ready():
 	$AnimatedSprite2D.play("idle_back")
@@ -16,6 +20,7 @@ func _physics_process(delta):
 	palyer_movement(delta)
 	enemy_attack()
 	attack()
+	update_health()
 	
 	if health <= 0:
 		player_alive = false
@@ -143,10 +148,12 @@ func enemy_attack():
 		health = health - 10
 		enemy_atk_cooldown = false
 		$atk_cooldown.start()
+		regen_timer_active = false
 		print("-10, Remaining Health: ", health)
 
 func _on_atk_cooldown_timeout():
 	enemy_atk_cooldown = true
+	regen_timer_active = true
 
 func attack():
 	var dir = current_dir
@@ -172,3 +179,20 @@ func _on_deal_atk_timer_timeout():
 	$deal_atk_timer.stop()
 	global.player_curr_atk = false
 	attacking = false
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	
+	if health >= max_health:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+
+func _on_regen_timer_timeout():
+	if regen_timer_active and health < max_health:
+		health = health + 20
+		if health > max_health:
+			health = max_health 
+	if health <= 0:
+		health = 0

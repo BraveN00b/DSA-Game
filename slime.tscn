@@ -171,8 +171,10 @@ sprite_frames = SubResource("SpriteFrames_guef1")
 animation = &"side"
 
 [node name="detection" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 shape = SubResource("CircleShape2D_rxfoy")
@@ -187,8 +189,21 @@ shape = SubResource("CapsuleShape2D_jb0d7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slime_hitbox"]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_cqcie")
+metadata/_edit_lock_ = true
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.329412, 0.796078, 0.0941176, 1)
+offset_left = -7.0
+offset_top = 8.0
+offset_right = 133.0
+offset_bottom = 35.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+
+[node name="damage_cooldown" type="Timer" parent="."]
 
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
 [connection signal="body_entered" from="slime_hitbox" to="." method="_on_slime_hitbox_body_entered"]
 [connection signal="body_exited" from="slime_hitbox" to="." method="_on_slime_hitbox_body_exited"]
+[connection signal="timeout" from="damage_cooldown" to="." method="_on_damage_cooldown_timeout"]

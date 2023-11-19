@@ -427,8 +427,7 @@ script = ExtResource("1_2dgf5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9, -2)
 sprite_frames = SubResource("SpriteFrames_lqo0q")
-animation = &"atk_side"
-frame_progress = 0.250116
+animation = &"idle_front"
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -456,7 +455,22 @@ wait_time = 0.5
 [node name="deal_atk_timer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.329412, 0.796078, 0.0941176, 1)
+offset_left = -15.0
+offset_top = 1.0
+offset_right = 119.0
+offset_bottom = 28.0
+scale = Vector2(0.1, 0.1)
+max_value = 200.0
+show_percentage = false
+
+[node name="regen_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="atk_cooldown" to="." method="_on_atk_cooldown_timeout"]
 [connection signal="timeout" from="deal_atk_timer" to="." method="_on_deal_atk_timer_timeout"]
+[connection signal="timeout" from="regen_timer" to="." method="_on_regen_timer_timeout"]

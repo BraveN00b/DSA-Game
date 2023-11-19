@@ -5,10 +5,11 @@ var player_chase = false
 var player = null
 var health = 100
 var player_inrange = false
-
+var can_take_damage = true
 
 func _physics_process(delta):
 	deal_with_damage()
+	update_health()
 	
 	if player_chase:
 		position += (player.position - position)/speed
@@ -49,8 +50,25 @@ func _on_slime_hitbox_body_exited(body):
 		
 func deal_with_damage():
 	if player_inrange and global.player_curr_atk == true:
-		health = health - 20
-		print("-20 Slime Health Remaining: ", health)
-		if health <= 0:
-			print("Slime Killed!")
-			self.queue_free()
+		if can_take_damage == true:
+			health = health - 20
+			$damage_cooldown.start()
+			can_take_damage = false
+			print("-20 Slime Health Remaining: ", health)
+			if health <= 0:
+				print("Slime Killed!")
+				self.queue_free()
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	
+	if health >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+
+
+
+func _on_damage_cooldown_timeout():
+	can_take_damage = true
